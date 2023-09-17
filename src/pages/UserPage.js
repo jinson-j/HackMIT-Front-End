@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { io } from "socket.io-client";
 import { toast } from 'react-toastify';
 
+import axios from 'axios';
 // @mui
 import {
   Card,
@@ -32,6 +33,7 @@ import Iconify from '../components/iconify';
 import Scrollbar from '../components/scrollbar';
 // sections
 import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
+
 // mock
 // import USERLIST from '../_mock/user';
 
@@ -236,9 +238,9 @@ export default function UserPage() {
                     const selectedUser = selected.indexOf(title) !== -1;
 
                     return (
-                      <TableRow hover key={id} tabIndex={-1}
-                        // role="checkbox"
-                        selected={selectedUser}>
+                      <TableRow hover key={id} tabIndex={-1} 
+                      // role="checkbox"
+                       selected={selectedUser}>
                         <TableCell padding="checkbox">
                           {/* <Checkbox checked={selectedUser} onChange={(event) => handleClick(event, name)} /> */}
                           {/* <Checkbox checked={selectedUser} onChange={(event) => handleClick(event, title)} /> */}
@@ -282,9 +284,40 @@ export default function UserPage() {
                         </TableCell>
 
                         <TableCell align="right">
-                          <IconButton size="large" color="inherit" onClick={handleOpenMenu}>
+                          {/* <IconButton size="large" color="inherit" onClick={handleOpenMenu}>
                             <Iconify icon={'eva:more-vertical-fill'} />
-                          </IconButton>
+                          </IconButton> */}
+                          {status === 'assigned' && localStorage.getItem('role') === 'pca' && (
+                            <Button
+                              variant="contained"
+                              onClick={async () => {
+                                await axios.post(`https://velox-backend.onrender.com/task/accept`, {
+                                  id,
+                                });
+                                tableData();
+                              }}
+                            >
+                              Accept
+                            </Button>
+                          )}
+                          {status === 'ongoing' && localStorage.getItem('role') === 'pca' && (
+                            <Button
+                              variant="contained"
+                              color="success"
+                              onClick={async () => {
+                                await axios.post(`https://velox-backend.onrender.com/task/complete`, {
+                                  id,
+                                });
+                                tableData();
+                              }}
+                              sx={{
+                                color: 'white',
+                                backgroundColor: 'green',
+                              }}
+                            >
+                              Complete
+                            </Button>
+                          )}
                         </TableCell>
                       </TableRow>
                     );

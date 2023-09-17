@@ -48,6 +48,8 @@ export default function LoginForm() {
         navigate('/dashboard', { replace: true });
         toast.success('login successfully');
         localStorage.setItem('id', Res.id);
+        localStorage.setItem('role', Res.role);
+        localStorage.setItem('email', Res.email);
       } else {
         toast.error('Incorrect Credentials');
       }

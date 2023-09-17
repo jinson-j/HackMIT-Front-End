@@ -34,7 +34,7 @@ export default function LoginForm() {
 
   const handleClick = async () => {
     try {
-      const body = { title, type, priority };
+      const body = { title, type, priority, assigned_by_id: localStorage.getItem('id') };
       const response = await fetch('https://velox-backend.onrender.com/task', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
