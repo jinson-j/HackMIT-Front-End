@@ -38,6 +38,8 @@ export default function AccountPopover() {
     setOpen(null);
     if (e.target.name === 'logout') {
       localStorage.removeItem('id');
+      localStorage.removeItem('role');
+      localStorage.removeItem('email');
       navigate('../../login', { replace: true });
     }
   };
