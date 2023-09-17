@@ -16,8 +16,12 @@ export default function LoginForm() {
   const [password, setPassword] = useState();
   const [showPassword, setShowPassword] = useState();
   const [role, setRole] = useState();
+  const [name, setName] = useState();
 
   const onChangeHandler = (e) => {
+    if (e.target.name === 'name') {
+      setName(e.target.value);
+    }
     if (e.target.name === 'email') {
       setEmail(e.target.value);
     }
@@ -31,7 +35,7 @@ export default function LoginForm() {
 
   const handleClick = async () => {
     try {
-      const body = { email, password, role };
+      const body = { name, email, password, role };
       const response = await fetch('https://velox-backend.onrender.com/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -55,6 +59,7 @@ export default function LoginForm() {
   return (
     <>
       <Stack spacing={3}>
+        <TextField name="name" label="Name" value={name} onChange={onChangeHandler} />
         <TextField name="email" label="Email address" value={email} onChange={onChangeHandler} />
 
         <TextField
