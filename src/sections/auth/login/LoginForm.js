@@ -46,7 +46,7 @@ export default function LoginForm() {
 
       if (Res.status) {
         navigate('/dashboard', { replace: true });
-        toast.success('login successfully');
+        toast.success('Login Successful !');
         localStorage.setItem('id', Res.id);
         localStorage.setItem('role', Res.role);
         localStorage.setItem('email', Res.email);
@@ -61,7 +61,7 @@ export default function LoginForm() {
   return (
     <>
       <Stack spacing={3}>
-        <TextField name="name" label="Name" value={name} onChange={onChangeHandler} />
+        {/* <TextField name="name" label="Name" value={name} onChange={onChangeHandler} /> */}
         <TextField name="email" label="Email address" value={email} onChange={onChangeHandler} />
 
         <TextField

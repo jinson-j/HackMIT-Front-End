@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Helmet } from 'react-helmet-async';
 import { filter, set } from 'lodash';
 import { sentenceCase } from 'change-case';
@@ -101,7 +102,7 @@ export default function UserPage() {
 
   const [filterName, setFilterName] = useState('');
 
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const [users, setUsers] = useState([]);
 
@@ -202,13 +203,13 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> Task | Velox </title>
+        <title> Tasks | Velox </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Task
+            Tasks
           </Typography>
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} onClick={onClickHandler}>
             New Task
@@ -249,10 +250,10 @@ export default function UserPage() {
                         <TableCell component="th" scope="row" padding="none">
                           <Stack direction="row" alignItems="center" spacing={2}>
                             {/* <Avatar alt={name} src={avatarUrl} /> */}
-                            {/* <Avatar
+                            <Avatar
                               alt={title}
-                              // src={avatarUrl}
-                            /> */}
+                               src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${title}`}
+                            />
                             <Typography variant="subtitle2" noWrap>
                               {/* {name} */}
                               {title}

@@ -1,5 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { faker } from '@faker-js/faker';
+
+import { useEffect } from 'react';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
@@ -30,8 +32,9 @@ export default function DashboardAppPage() {
       </Helmet>
 
       <Container maxWidth="xl">
+
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hello, welcome back!
+          Welcome to Volex Dashboard !
         </Typography>
 
         <Grid container spacing={3}>
