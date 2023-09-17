@@ -49,7 +49,7 @@ export default function AddTaskPage() {
         <Container maxWidth="sm">
           <StyledContent>
             <Typography variant="h4" gutterBottom>
-              Add Task
+              Add A Task
             </Typography>
 
             <AddTaskForm />

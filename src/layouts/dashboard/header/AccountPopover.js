@@ -36,10 +36,10 @@ export default function AccountPopover() {
 
   const handleClose = (e) => {
     setOpen(null);
-    if (e.target.name === 'logout') {
-      localStorage.removeItem('id');
-      navigate('../../login', { replace: true });
-    }
+    localStorage.removeItem('id');
+    localStorage.removeItem('role');
+    localStorage.removeItem('email');
+    navigate('../../login', { replace: true });
   };
 
   return (
@@ -61,7 +61,10 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar src={account.photoURL} alt="photoURL" />
+        <Avatar
+          src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${localStorage.getItem('email')}`}
+          alt="photoURL"
+        />
       </IconButton>
 
       <Popover
@@ -85,10 +88,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle2" noWrap>
-            {account.displayName}
+            {localStorage.getItem('email')}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {account.email}
+            {localStorage.getItem('role').charAt(0).toUpperCase() + localStorage.getItem('role').slice(1)}{' '}
           </Typography>
         </Box>
 

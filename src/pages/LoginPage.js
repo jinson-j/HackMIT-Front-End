@@ -71,6 +71,7 @@ export default function LoginPage() {
             <Typography variant="h4" gutterBottom>
               Sign in to Velox
             </Typography>
+            <br />
 
             <LoginForm />
           </StyledContent>
