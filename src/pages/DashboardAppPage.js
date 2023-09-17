@@ -143,7 +143,7 @@ export default function DashboardAppPage() {
           <Grid item xs={12} md={6} lg={8}>
             <AppConversionRates
               title="Leading PCA's"
-              subheader="Leading PCA: Joe R"
+              subheader="Most Tasks Completed This Month | Leading PCA: Joe R"
               chartData={[
                 { label: 'Joe R', value: 540 },
                 { label: 'Abby A', value: 533 },
@@ -166,7 +166,7 @@ export default function DashboardAppPage() {
                 { label: 'Needles', value: 6220 },
                 { label: 'Sanitary', value: 3780 },
                 { label: 'Runners', value: 6300 },
-                { label: 'Clamps', value: 3700 },
+                { label: 'Clamps', value: 3500 },
               ]}
               chartColors={[
                 theme.palette.primary.main,
@@ -182,8 +182,14 @@ export default function DashboardAppPage() {
               title="News Update"
               list={[...Array(5)].map((_, index) => ({
                 id: faker.datatype.uuid(),
-                title: faker.name.jobTitle(),
-                description: faker.name.jobTitle(),
+                title: [
+                  'Best Performing PCA of September: Joe R.',
+                  'Floor wide training required on Sep 22.',
+                  'Lunch available for all PCAs today in lobby',
+                  'EQUIPMENT: Please returrn the Defibrillator to Mack Lab for maintainence ',
+                  'Have a good day everyone!',
+                ][index], 
+                // description: faker.name.jobTitle(),
                 image: `/assets/images/covers/cover_${index + 1}.jpg`,
                 postedAt: faker.date.recent(),
               }))}
@@ -192,45 +198,45 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={4}>
             <AppOrderTimeline
-              title="Order Timeline"
+              title="Most Recent Tasks"
               list={[...Array(5)].map((_, index) => ({
                 id: faker.datatype.uuid(),
                 title: [
-                  '1983, orders, $4220',
-                  '12 Invoices have been paid',
-                  'Order #37745 from September',
-                  'New order placed #XF-2356',
-                  'New order placed #XF-2346',
+                  '*URGENT* SUPPLY: 2 Epidural Needles SKU: 27383838',
+                  'RUNNER: Requested Runner Lab #23',
+                  'TURNOVER: Room 12',
+                  'EQUIPMENT: Defibrillator Located in Supply 008',
+                  'TURNOVER: Room 3',
                 ][index],
                 type: `order${index + 1}`,
-                time: faker.date.past(),
+                // time: faker.date.past(),
               }))}
             />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
             <AppTrafficBySite
-              title="Traffic by Site"
+              title="Live Task Queue"
               list={[
                 {
-                  name: 'FaceBook',
-                  value: 323234,
-                  icon: <Iconify icon={'eva:facebook-fill'} color="#1877F2" width={32} />,
+                  name: 'Room 1',
+                  value: 4,
+                  icon: <Iconify icon={'eva:activity-fill'} color="#1877F2" width={32} />,
                 },
                 {
-                  name: 'Google',
-                  value: 341212,
-                  icon: <Iconify icon={'eva:google-fill'} color="#DF3E30" width={32} />,
+                  name: 'Room 2',
+                  value: 8,
+                  icon: <Iconify icon={'eva:activity-fill'} color="#DF3E30" width={32} />,
                 },
                 {
-                  name: 'Linkedin',
-                  value: 411213,
-                  icon: <Iconify icon={'eva:linkedin-fill'} color="#006097" width={32} />,
+                  name: 'Room 3',
+                  value: 1,
+                  icon: <Iconify icon={'eva:activity-fill'} color="#006097" width={32} />,
                 },
                 {
-                  name: 'Twitter',
-                  value: 443232,
-                  icon: <Iconify icon={'eva:twitter-fill'} color="#1C9CEA" width={32} />,
+                  name: 'Room 4',
+                  value: 3,
+                  icon: <Iconify icon={'eva:activity-fill'} color="#1C9CEA" width={32} />,
                 },
               ]}
             />
@@ -240,11 +246,11 @@ export default function DashboardAppPage() {
             <AppTasks
               title="Tasks"
               list={[
-                { id: '1', label: 'Create FireStone Logo' },
-                { id: '2', label: 'Add SCSS and JS files if required' },
-                { id: '3', label: 'Stakeholder Meeting' },
-                { id: '4', label: 'Scoping & Estimations' },
-                { id: '5', label: 'Sprint Showcase' },
+                { id: '1', label: 'Reorder SKU: 2837282' },
+                { id: '2', label: 'Onboard New PCAs' },
+                { id: '3', label: 'Board Meeting' },
+                { id: '4', label: 'Case Planning' },
+                { id: '5', label: 'Q3 Budget Analysis' },
               ]}
             />
           </Grid>
