@@ -11,6 +11,7 @@ import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import AddTaskPage from './pages/AddTask';
 import UserLayout from './layouts/dashboard/UserLayout';
+import HomePage from './pages/HomePage';
 
 // ----------------------------------------------------------------------
 
@@ -41,7 +42,7 @@ export default function Router() {
     {
       element: <SimpleLayout />,
       children: [
-        { element: <Navigate to="/dashboard/app" />, index: true },
+        { element: <HomePage/>, index: true },
         { path: '404', element: <Page404 /> },
         { path: '*', element: <Navigate to="/404" /> },
       ],

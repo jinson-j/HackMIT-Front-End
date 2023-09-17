@@ -44,7 +44,7 @@ export default function DashboardAppPage() {
 
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Welcome to Volex Dashboard !
+          Welcome to Velox Dashboard !
         </Typography>
 
         <Grid container spacing={3}>

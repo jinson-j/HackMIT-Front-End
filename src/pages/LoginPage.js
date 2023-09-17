@@ -45,7 +45,7 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Login | Volex </title>
+        <title> Login | Velox </title>
       </Helmet>
 
       <StyledRoot>
