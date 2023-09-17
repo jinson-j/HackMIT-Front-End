@@ -26,12 +26,12 @@ export default function DashboardAppPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard | Minimal UI </title>
+        <title> Dashboard </title>
       </Helmet>
 
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back
+          Hello, welcome back!
         </Typography>
 
         <Grid container spacing={3}>
@@ -96,12 +96,12 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={4}>
             <AppCurrentVisits
-              title="Current Visits"
+              title="Most Requested Equipment"
               chartData={[
-                { label: 'America', value: 4344 },
-                { label: 'Asia', value: 5435 },
-                { label: 'Europe', value: 1443 },
-                { label: 'Africa', value: 4443 },
+                { label: 'Anesthesia Machine', value: 5220 },
+                { label: 'Ventilators', value: 4780 },
+                { label: 'Defibrillators', value: 4300 },
+                { label: 'Imaging Equipment', value: 5700 },
               ]}
               chartColors={[
                 theme.palette.primary.main,
@@ -115,32 +115,37 @@ export default function DashboardAppPage() {
           <Grid item xs={12} md={6} lg={8}>
             <AppConversionRates
               title="Leading PCA's"
-              subheader="(+43%) than last year"
+              subheader="Leading PCA: Joe R"
               chartData={[
-                { label: 'Joe R', value: 400 },
-                { label: 'Abby A', value: 430 },
-                { label: 'Trevor G', value: 448 },
-                { label: 'Canada', value: 470 },
-                { label: 'France', value: 540 },
-                { label: 'Germany', value: 580 },
-                { label: 'South Korea', value: 690 },
-                { label: 'Netherlands', value: 1100 },
-                { label: 'United States', value: 1200 },
-                { label: 'United Kingdom', value: 1380 },
+                { label: 'Joe R', value: 540 },
+                { label: 'Abby A', value: 533 },
+                { label: 'Trevor G', value: 480 },
+                { label: 'Eva K', value: 474 },
+                { label: 'Samhit K', value: 450 },
+                { label: 'Jason N.', value: 444 },
+                { label: 'Lauren S.', value: 441 },
+                { label: 'Nandan S.', value: 439 },
+                { label: 'Mary B.', value: 410 },
+                { label: 'Rick R.', value: 380 },
               ]}
             />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
-            <AppCurrentSubject
-              title="Current Subject"
-              chartLabels={['English', 'History', 'Physics', 'Geography', 'Chinese', 'Math']}
+            <AppCurrentVisits
+              title="Most Requested Supply"
               chartData={[
-                { name: 'Series 1', data: [80, 50, 30, 40, 100, 20] },
-                { name: 'Series 2', data: [20, 30, 40, 80, 20, 80] },
-                { name: 'Series 3', data: [44, 76, 78, 13, 43, 10] },
+                { label: 'Needles', value: 6220 },
+                { label: 'Sanitary', value: 3780 },
+                { label: 'Runners', value: 6300 },
+                { label: 'Clamps', value: 3700 },
               ]}
-              chartColors={[...Array(6)].map(() => theme.palette.text.secondary)}
+              chartColors={[
+                theme.palette.primary.main,
+                theme.palette.info.main,
+                theme.palette.warning.main,
+                theme.palette.error.main,
+              ]}
             />
           </Grid>
 
