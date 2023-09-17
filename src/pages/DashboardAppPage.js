@@ -1,9 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 import { faker } from '@faker-js/faker';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // @mui
 import { useTheme } from '@mui/material/styles';
+import axios from 'axios';
+
 import { Grid, Container, Typography } from '@mui/material';
 // components
 import Iconify from '../components/iconify';
@@ -24,6 +26,15 @@ import {
 
 export default function DashboardAppPage() {
   const theme = useTheme();
+  const [statistics, setStatistics] = useState({});
+
+  const fetchStatistics = async () => {
+    const res = await axios.get('https://velox-backend.onrender.com/statistics');
+    setStatistics(res);
+  };
+  useEffect(() => {
+    fetchStatistics();
+  }, []);
 
   return (
     <>
@@ -32,28 +43,44 @@ export default function DashboardAppPage() {
       </Helmet>
 
       <Container maxWidth="xl">
-
         <Typography variant="h4" sx={{ mb: 5 }}>
           Welcome to Volex Dashboard !
         </Typography>
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Tasks" total={113} icon={'ant-design:number-outlined'} />
-
-
+            <AppWidgetSummary
+              title="Total Tasks"
+              total={statistics.data ? statistics.data.totalTasksCount : 0}
+              icon={'ant-design:number-outlined'}
+            />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Percent Completed On Time" total={"94"} color="info" icon={'ant-design:percentage-outlined'} />
+            <AppWidgetSummary
+              title="Percent Completed On Time"
+              total={statistics.data ? statistics.data.percentCompletedTasks : 0}
+              color="info"
+              icon={'ant-design:percentage-outlined'}
+            />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total On Call Employees" total={15} color="warning" icon={'ant-design:usergroup-add-outlined'} />
+            <AppWidgetSummary
+              title="Total On Call Employees"
+              total={statistics.data ? statistics.data.totalEmployeesCount : 0}
+              color="warning"
+              icon={'ant-design:usergroup-add-outlined'}
+            />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Urgent Tasks" total={7} color="error" icon={'ant-design:alert-twotone'} />
+            <AppWidgetSummary
+              title="Total Urgent Tasks"
+              total={statistics.data ? statistics.data.totalUrgentTasksCount : 0}
+              color="error"
+              icon={'ant-design:alert-twotone'}
+            />
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
@@ -71,8 +98,6 @@ export default function DashboardAppPage() {
                 '08/01/2023',
                 '09/01/2023',
                 '10/01/2023',
-                
-                
               ]}
               chartData={[
                 // {
