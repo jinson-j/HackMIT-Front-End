@@ -1,8 +1,8 @@
 ## Velox Frontend
 
-Live Link : [https://velox-mit.vercel.app/]https://velox-mit.vercel.app/
+Live Link : https://velox-mit.vercel.app/
 
-Backend Repository : [https://github.com/jaison080/velox-backend/]https://github.com/Mayon-Francis/velox-backend
+Backend Repository : https://github.com/Mayon-Francis/velox-backend
 
 ## Inspiration
 Hospitals are places of great care and love. Indeed, they work hard to ensure every patient receives the utmost care in the possible most efficient way. However, they do not always successfully establish a system to improve task management and care-to-next-care time turnover. Traditional, this is done by backward "Nokia" phones or simply yelling down the hallway. We are here to fix that! Our system will help you effectively handle task dispatches so that most patients can be accommodated for the most effective care.
