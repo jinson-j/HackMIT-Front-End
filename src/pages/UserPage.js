@@ -4,7 +4,7 @@ import { filter, set } from 'lodash';
 import { sentenceCase } from 'change-case';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { io } from "socket.io-client";
+import { io } from 'socket.io-client';
 import { toast } from 'react-toastify';
 
 import axios from 'axios';
@@ -79,7 +79,7 @@ function applySortFilter(array, comparator, query) {
   }
   return stabilizedThis.map((el) => el[0]);
 }
-const BaseUrl = "https://velox-backend.onrender.com";
+const BaseUrl = 'https://velox-backend.onrender.com';
 
 const socket = io(BaseUrl, {
   protocols: ['websocket', 'polling', 'flashsocket'],
@@ -211,9 +211,11 @@ export default function UserPage() {
           <Typography variant="h4" gutterBottom>
             Tasks
           </Typography>
-          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} onClick={onClickHandler}>
-            New Task
-          </Button>
+          {localStorage.getItem('role') === 'doctor' && (
+            <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} onClick={onClickHandler}>
+              New Task
+            </Button>
+          )}
         </Stack>
 
         <Card>
@@ -239,9 +241,13 @@ export default function UserPage() {
                     const selectedUser = selected.indexOf(title) !== -1;
 
                     return (
-                      <TableRow hover key={id} tabIndex={-1} 
-                      // role="checkbox"
-                       selected={selectedUser}>
+                      <TableRow
+                        hover
+                        key={id}
+                        tabIndex={-1}
+                        // role="checkbox"
+                        selected={selectedUser}
+                      >
                         <TableCell padding="checkbox">
                           {/* <Checkbox checked={selectedUser} onChange={(event) => handleClick(event, name)} /> */}
                           {/* <Checkbox checked={selectedUser} onChange={(event) => handleClick(event, title)} /> */}
@@ -250,10 +256,7 @@ export default function UserPage() {
                         <TableCell component="th" scope="row" padding="none">
                           <Stack direction="row" alignItems="center" spacing={2}>
                             {/* <Avatar alt={name} src={avatarUrl} /> */}
-                            <Avatar
-                              alt={title}
-                               src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${title}`}
-                            />
+                            <Avatar alt={title} src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${title}`} />
                             <Typography variant="subtitle2" noWrap>
                               {/* {name} */}
                               {title}
